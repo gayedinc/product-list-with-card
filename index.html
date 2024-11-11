@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Text:wght@300..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/product.css">
+  <script src="assets/js/product.js" defer></script>
+  <title>Product List with Card</title>
+</head>
+<body>
+  <div class="container">
+    <div class="desserts">
+      <div class="header">
+        <h2>Desserts</h2>
+      </div>
+      <ul class="dessertList"></ul>
+    </div>
+    <div class="order-cart-empty">
+      <h3>Your Cart (0)</h3>
+      <img src="assets/img/empty-cart-image.svg" alt="empty cart image">
+      <p>Your added items will appear here</p>
+    </div>
+    <div class="order-cart-full">
+      <h3>Your Cart (<span class="product-counter"></span>)</h3>
+      <ul class="orderList"></ul>
+      <div class="orderTotal">
+        <p>Order Total</p>
+        <span class="totalOrderPrice"></span>
+      </div>
+      <div class="carbon-info-box">
+        <img src="assets/img/carbon-tree.svg" alt="Carbon Tree Image">
+        <p>This is a <span>carbon-neutral</span> delivery</p>
+      </div>
+      <div class="confirm-order">
+        <button class="confirmBtn">Confirm Order</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

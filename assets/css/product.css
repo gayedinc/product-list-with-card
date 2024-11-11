@@ -1,0 +1,285 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Red Hat Text";
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  background-color: #FCF8F6;
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
+}
+
+a {
+  text-decoration: none;;
+}
+
+ul {
+  list-style: none;
+}
+
+.container {
+  max-width: 327px;
+  margin-inline: auto;
+  padding-block: 24px;
+}
+
+.dessertList {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.dessert-image {
+  margin-inline: auto;
+  width: 100%;
+}
+
+.card-inner {
+  position: relative;
+}
+
+.header h2 {
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 48px;
+  color: #260F08;
+  margin-bottom: 32px;
+}
+
+.add-btn {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+  margin-inline: auto;
+  border: 1px solid #AD8A85;
+  background-color: #FFFFFF;
+  padding: 12px 28px;
+  border-radius: 999px;
+  position: absolute;
+  bottom: -18px;
+  left: 80px;
+}
+
+.card-text {
+  margin-top: 38px;
+}
+
+.card-text h3 {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18.52px;
+  color: #87635A;
+  margin-bottom: 4px;
+}
+
+.card-text h4 {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 21.17px;
+  color: #260F08;
+  margin-bottom: 4px;
+}
+
+.card-text p {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 21.17px;
+  color: #C73B0F;
+}
+
+.order-cart {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #F5EEEC;
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+}
+.orderTotal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  color: #260F08;
+}
+
+.orderTotal p {
+  font-weight: 400;
+  line-height: 18.52px;
+  font-size: 14px;
+}
+
+.totalOrderPrice {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 31.75px;
+}
+
+.confirmBtn {
+  display: block;
+  width: 100%;
+  padding: 16px;
+  border-radius: 999px;
+  border-style: none;
+  background-color: #C73B0F;
+  color: #FFFFFF;
+  font-weight: 600;
+  line-height: 21.17px;
+  font-size: 16px;
+}
+
+.order-cart-empty {
+  display: block;
+}
+
+.order-cart-empty, .order-cart-full {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.order-cart-empty h3, .order-cart-full h3 {
+  font-weight: 700;
+  line-height: 31.75px;
+  font-size: 24px;
+  color: #C73B0F;
+  margin-bottom: 24px;
+}
+
+.order-cart-empty img {
+  margin-inline: auto;
+}
+
+.order-cart-empty p {
+  font-weight: 600;
+  line-height: 18.52px;
+  font-size: 14px;
+  color: #87635A;
+  margin-top: 16px;
+  text-align: center;
+}
+
+.order-cart-full {
+  max-width: 384px;
+  min-height: 542px;
+}
+
+.order-cart-full h4 {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 18.52px;
+  margin-bottom: 8px;
+  color: #260F08;
+}
+
+.sub-info {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.quantity-span, .orjPrice, .lastPrice {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 18.52px;
+  color: #C73B0F;
+}
+
+.orjPrice, .lastPrice {
+  font-weight: 400;
+  color: #87635A;
+}
+
+.lastPrice {
+  font-weight: 600;
+}
+
+.d-none {
+  display: none;
+}
+
+.d-block {
+  display: block;
+}
+
+.carbon-info-box {
+  display: flex;
+  gap: 8px;
+  border-radius: 8px;
+  background-color: #FCF8F6;
+  padding: 16px;
+  margin-inline: auto;
+  justify-content: center;
+  margin-block: 24px;
+}
+
+.carbon-info-box p {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18.52px;
+  color: #260F08;
+}
+
+.carbon-info-box span {
+  font-weight: 600;
+}
+
+@media (width >= 768px) {
+
+  .container {
+    max-width: 688px;
+  }
+
+  .dessertList {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px 32px;
+  }
+
+  .add-btn {
+    left: 22px;
+  }
+}
+
+@media (width >= 1440px) {
+  .container {
+    max-width: 1216px;
+    display: flex;
+    gap: 32px;
+  }
+
+  .order-cart-empty, .order-cart-full {
+    height: 299px;
+  }
+
+  .add-btn {
+    left: 45px;
+  }
+}
