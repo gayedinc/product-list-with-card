@@ -127,22 +127,6 @@ function handleAddButtons(e) {
     });
   }
 
-  const stocks = [];
-
-  for (let i = 0; i < desserts.length; i++) {
-
-    for (const dessert of desserts) {
-      stocks[i] = dessert.stock;
-    }
-  }
-  for (const dessert of desserts) {
-    if (searchedOrder === dessert.name) {
-      if (searchedOrder.quantity > searchedOrder.stock) {
-
-      }
-    }
-  }
-
   renderOrders();
 }
 
