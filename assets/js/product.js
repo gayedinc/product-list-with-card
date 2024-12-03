@@ -76,6 +76,7 @@ let desserts = [
 const dessertList = document.querySelector('.dessertList');
 const orderCart = document.querySelector('.order-cart');
 
+// tatlı kartlarının oluşturulması
 for (const dessert of desserts) {
   dessertList.innerHTML +=
     `<li class="dessert-card">
@@ -93,35 +94,42 @@ for (const dessert of desserts) {
     </li>`
 }
 
+// sepete ürün eklemek için
 const addBtns = document.querySelectorAll('.add-btn');
+for (const btn of addBtns) {
+  btn.addEventListener('click', handleAddButtons);
+}
+
 const orderList = document.querySelector('.orderList');
-const orders = [];
+const orders = []; // kullanıcının sepete eklediği ürünleri tutar
 
 const emptyOrderCart = document.querySelector('.order-cart-empty');
 const fullOrderCart = document.querySelector('.order-cart-full');
 const productCounter = document.querySelector('.product-counter');
 const totalOrderPrice = document.querySelector('.totalOrderPrice');
 
+// en başta dolu sepet gösterilmesin
 fullOrderCart.classList.add('d-none');
-
-for (const btn of addBtns) {
-  btn.addEventListener('click', handleAddButtons);
-}
 
 function handleAddButtons(e) {
   e.stopPropagation();
 
+  // tıklanan butondaki data-isim ile tatlının ismini almak için
+  // eğer butonun içindeki img'a tıklanırsa data-isim img olacağından undefined döner
+  // bunun olmaması için veya => img dönersen de parentElementini al yani yine butonun data-isim özelliğini al
   const dessertName = e.target.dataset.isim || e.target.parentElement.dataset.isim;
 
+  // boş sepet gizlendi, dolu sepet gösterildi
   emptyOrderCart.classList.add('d-none');
   fullOrderCart.classList.add('d-block');
 
+  // order.name sipariş nesnesindeki ürün adı, dessertName siparişe eklenmek istenen tatlının adı
   let searchedOrder = orders.find(order => order.name === dessertName);
 
-  if (searchedOrder) {
+  if (searchedOrder) { // eğer tatlı daha önceden sepete eklendiyse sadece miktar arttır
     searchedOrder.quantity++;
   } else {
-    orders.push({
+    orders.push({ // eğer tatlı sepete ilk defa ekleniyorsa yeni tatlı olarak ekle ve miktarını 1'den başlat
       name: dessertName,
       quantity: 1,
     });
@@ -130,15 +138,15 @@ function handleAddButtons(e) {
   renderOrders();
 }
 
-let totalQuantity = 0;
-let totalPrice = 0;
+let totalQuantity = 0; // toplam tatlı miktarı
+let totalPrice = 0; // toplam fiyat
 
 function renderOrders() {
-  orderList.innerHTML = '';
+  orderList.innerHTML = ''; // siparişleri listelemek için içeriği sıfırlanıyor
   totalQuantity = 0;
   totalPrice = 0;
-  productCounter.innerText = '';
-  totalOrderPrice.innerText = '';
+  productCounter.innerText = ''; // toplam tatlı miktarının gösterildiği alan
+  totalOrderPrice.innerText = ''; // toplam fiyatın gösterildiği alan
 
   for (const order of orders) {
     totalQuantity += Number(order.quantity);
@@ -172,27 +180,28 @@ function renderOrders() {
   for (const deleteBtn of deleteBtns) {
     deleteBtn.addEventListener('click', deleteProducts);
   }
-  if (productCounter.innerText == 0) {
-    fullOrderCart.classList.remove('d-block');
+  if (productCounter.innerText == 0) { // eğer toplam tatlı miktarı 0 ise
+    fullOrderCart.classList.remove('d-block'); // dolu sepeti gizle
     emptyOrderCart.classList.remove('d-none');
-    emptyOrderCart.classList.add('d-block');
+    emptyOrderCart.classList.add('d-block'); // boş sepeti göster
   } else {
-    fullOrderCart.classList.add('d-block');
+    fullOrderCart.classList.add('d-block'); // dolu sepeti göster
     emptyOrderCart.classList.remove('d-block');
-    emptyOrderCart.classList.add('d-none');
+    emptyOrderCart.classList.add('d-none'); // boş sepeti gizle
   }
 }
 
 function deleteProducts() {
   let productIndex = -1; //eğer index numarası yoksa -1 döner çünkü
 
-  for (let i = 0; i < orders.length; i++) {
-    if (orders[i].name == this.dataset.name) {
-      productIndex = i;
+  for (let i = 0; i < orders.length; i++) { // silmek istenilen ürünün index'i için orders içerisinde dönüyoruz
+    if (orders[i].name == this.dataset.name) { // dataset ile silinecek olan ürünü bulundu
+      // sepetteki ürünün adı ile tıklanan ürünün adı eşit mi?
+      productIndex = i; // eşitse index productIndex değişkenine atanır, silinecek doğru ürünün hangi sırada olduğu bulunur
     }
   }
 
-  orders.splice(productIndex, 1);
-  this.parentElement.remove();
-  renderOrders();
+  orders.splice(productIndex, 1); // ürün hem diziden hem de DOM'dan kaldırılır
+  this.parentElement.remove(); //this deleteBtn'dir ve parent elementi listedeki her bir ürünün (li) tamamıdır
+  renderOrders(); // renderOrders yeniden çağrılarak sepet güncellenir, toplam fiyat ve miktar yeniden oluşturulur
 }
