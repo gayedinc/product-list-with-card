@@ -87,7 +87,7 @@ for (const dessert of desserts) {
         </button>
       </div>
       <div class="card-text">
-        <h3">${dessert.category}</h3>
+        <h3>${dessert.category}</h3>
         <h4>${dessert.name}</h4>
         <p>${dessert.price}</p>
       </div>
